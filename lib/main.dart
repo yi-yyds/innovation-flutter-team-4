@@ -10,12 +10,15 @@ class InnovationHelloApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // 【修改1】自定义应用标题
-      title: '赵杰的Flutter实验',
-      debugShowCheckedModeBanner: false, // 去掉右上角的 debug 小红条
+      // [修改1] 自定义应用标题
+      title: '陈建涛的Flutter实验',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // 【修改2】自定义主题色：赛博极客的深靛青色
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo, brightness: Brightness.light),
+        // [修改2] 自定义主题色：深青绿色
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.teal,
+          brightness: Brightness.light,
+        ),
         useMaterial3: true,
       ),
       home: const HelloHomePage(),
@@ -27,16 +30,15 @@ class HelloHomePage extends StatefulWidget {
   const HelloHomePage({super.key});
 
   @override
-  State<HelloHomePage> createState() => HelloHomePageState();
+  State<HelloHomePage> createState() => _HelloHomePageState();
 }
 
-class HelloHomePageState extends State<HelloHomePage> {
-  int completedTasks = 0; 
+class _HelloHomePageState extends State<HelloHomePage> {
+  int completedTasks = 0;
 
   void finishOneTask() {
-    // 核心逻辑：通知页面刷新数字
     setState(() {
-      completedTasks += 1; 
+      completedTasks += 1;
     });
   }
 
@@ -44,8 +46,8 @@ class HelloHomePageState extends State<HelloHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // 【修改3】自定义顶部导航栏文字
-        title: const Text('赵杰的创新实验 Flutter 首页'),
+        // [修改3] 自定义顶部导航栏标题
+        title: const Text('陈建涛的创新实验 Flutter 首页'),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
@@ -55,43 +57,93 @@ class HelloHomePageState extends State<HelloHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // 【修改4】增加炫酷的火箭发射图标
-              const Icon(Icons.rocket_launch, size: 80, color: Colors.indigo),
+              // [修改4] 使用代码/终端风格图标
+              const Icon(Icons.terminal, size: 80, color: Colors.teal),
               const SizedBox(height: 24),
-              // 【修改5】修改页面欢迎语
+              // [修改5] 修改页面主文字
               const Text(
-                'Hello Flutter! 我已成功打通本地开发环境！',
+                'Hello Flutter！我已完成第 14 周 Flutter 入门任务！',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 16),
-              // 【修改6】增加个人专属信息（姓名、学号尾号、专业）
+              // [修改6] 增加个人信息卡片
               Container(
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 14,
                 ),
-                child: const Text(
-                  '姓名：赵杰 | 学号末位：0331\n专业：智能科学与技术 (2023级)',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, color: Colors.black87),
+                decoration: BoxDecoration(
+                  color: Colors.teal.withOpacity(0.08),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: Colors.teal.withOpacity(0.3),
+                  ),
+                ),
+                child: const Column(
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.person, size: 18, color: Colors.teal),
+                        SizedBox(width: 6),
+                        Text(
+                          '姓名：陈建涛  |  学号末位：0225',
+                          style: TextStyle(fontSize: 15, color: Colors.black87),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 6),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.school, size: 18, color: Colors.teal),
+                        SizedBox(width: 6),
+                        Text(
+                          '专业：智能科学与技术  |  2023 级',
+                          style: TextStyle(fontSize: 15, color: Colors.black87),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 6),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.group, size: 18, color: Colors.teal),
+                        SizedBox(width: 6),
+                        Text(
+                          '小组：第 4 组',
+                          style: TextStyle(fontSize: 15, color: Colors.black87),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 40),
-              // 【修改7】修改计数器的业务含义
+              const SizedBox(height: 36),
+              // [修改7] 修改计数器含义
               Text(
-                '今日代码测试运行次数：$completedTasks 次',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.indigo),
+                '今日实验打卡次数：$completedTasks 次',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.teal,
+                ),
               ),
             ],
           ),
         ),
       ),
+      // [修改8] 修改按钮图标与文案
       floatingActionButton: FloatingActionButton.extended(
         onPressed: finishOneTask,
-        icon: const Icon(Icons.check_circle),
-        label: const Text('完成一次代码打卡'), // 【修改8】修改按钮文案
+        icon: const Icon(Icons.check_circle_outline),
+        label: const Text('完成一次打卡'),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
     );
   }
