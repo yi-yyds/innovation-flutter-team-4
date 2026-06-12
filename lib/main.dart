@@ -14,9 +14,9 @@ class InnovationHelloApp extends StatelessWidget {
       title: '陈建涛的Flutter实验',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // [修改2] 自定义主题色：深青绿色
+        // [修改2] 自定义主题色：鲜艳绿色
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
+          seedColor: Colors.green,
           brightness: Brightness.light,
         ),
         useMaterial3: true,
@@ -57,8 +57,23 @@ class _HelloHomePageState extends State<HelloHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // [修改4] 使用代码/终端风格图标
-              const Icon(Icons.terminal, size: 80, color: Colors.teal),
+              // [修改4] 使用代码/终端风格图标，添加动画效果
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.green.withOpacity(0.1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.green.withOpacity(0.3),
+                      blurRadius: 20,
+                      spreadRadius: 5,
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(20),
+                child: const Icon(Icons.terminal, size: 80, color: Colors.green),
+              ),
               const SizedBox(height: 24),
               // [修改5] 修改页面主文字
               const Text(
@@ -77,10 +92,10 @@ class _HelloHomePageState extends State<HelloHomePage> {
                   vertical: 14,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.teal.withOpacity(0.08),
+                  color: Colors.green.withOpacity(0.08),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: Colors.teal.withOpacity(0.3),
+                    color: Colors.green.withOpacity(0.3),
                   ),
                 ),
                 child: const Column(
@@ -88,7 +103,7 @@ class _HelloHomePageState extends State<HelloHomePage> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.person, size: 18, color: Colors.teal),
+                        Icon(Icons.person, size: 18, color: Colors.green),
                         SizedBox(width: 6),
                         Text(
                           '姓名：陈建涛  |  学号末位：0225',
@@ -100,7 +115,7 @@ class _HelloHomePageState extends State<HelloHomePage> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.school, size: 18, color: Colors.teal),
+                        Icon(Icons.school, size: 18, color: Colors.green),
                         SizedBox(width: 6),
                         Text(
                           '专业：智能科学与技术  |  2023 级',
@@ -112,7 +127,7 @@ class _HelloHomePageState extends State<HelloHomePage> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.group, size: 18, color: Colors.teal),
+                        Icon(Icons.group, size: 18, color: Colors.green),
                         SizedBox(width: 6),
                         Text(
                           '小组：第 4 组',
@@ -130,7 +145,7 @@ class _HelloHomePageState extends State<HelloHomePage> {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: Colors.teal,
+                  color: Colors.green,
                 ),
               ),
             ],
@@ -142,7 +157,7 @@ class _HelloHomePageState extends State<HelloHomePage> {
         onPressed: finishOneTask,
         icon: const Icon(Icons.check_circle_outline),
         label: const Text('完成一次打卡'),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.green,
         foregroundColor: Colors.white,
       ),
     );
