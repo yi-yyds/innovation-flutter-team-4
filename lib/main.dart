@@ -11,7 +11,7 @@ class InnovationHelloApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // [修改1] 自定义应用标题
-      title: '陈建涛的Flutter实验',
+      title: '赵家国的Flutter实验',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // [修改2] 自定义主题色：鲜艳绿色
@@ -47,7 +47,7 @@ class _HelloHomePageState extends State<HelloHomePage> {
     return Scaffold(
       appBar: AppBar(
         // [修改3] 自定义顶部导航栏标题
-        title: const Text('陈建涛的创新实验 Flutter 首页'),
+        title: const Text('赵家国的创新实验 Flutter 首页'),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
@@ -106,7 +106,7 @@ class _HelloHomePageState extends State<HelloHomePage> {
                         Icon(Icons.person, size: 18, color: Colors.green),
                         SizedBox(width: 6),
                         Text(
-                          '姓名：陈建涛  |  学号末位：0225',
+                          '姓名：赵家国  |  学号末位：0224',
                           style: TextStyle(fontSize: 15, color: Colors.black87),
                         ),
                       ],
